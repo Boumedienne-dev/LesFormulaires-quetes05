@@ -1,0 +1,28 @@
+form {
+    display: flex;
+    flex-direction: column;
+    height: 400px;
+    width: 350px;
+    margin: auto auto auto auto;
+    padding-top: 100px;
+    align-items: center;
+    justify-content: space-between;
+}
+
+input {
+    width: 100%;
+    box-shadow: grey 1px 3px;
+}
+
+input.ng-touched.ng-dirty.ng-invalid {
+    border: 2px solid red
+}
+
+span p {
+    font-style: italic;
+    color: rgb(223, 165, 176);
+}
+
+label {
+    font-size: 1.2rem;
+}

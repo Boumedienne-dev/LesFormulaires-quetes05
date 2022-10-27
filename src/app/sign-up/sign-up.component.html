@@ -1,0 +1,49 @@
+<form #registerForm="ngForm" (submit)="registerForm.valid && onSubmit()">
+
+  <label for="email">Courriel : </label>
+  <input id="email" name="email" #email="ngModel"  [(ngModel)]="user.email"  required email/>
+
+  <span *ngIf="registerForm.submitted && email.invalid">
+    <p *ngIf="email.errors?.['required']">Le champ courriel est obligatoire</p>
+    <p *ngIf="email.errors?.['email']">Vous devez renseigner un courriel valide</p>
+  </span>
+
+  <label for="password">Mot de passe :</label>
+  <input id="password" type="password" name="password" #password="ngModel" [(ngModel)]="user.password" minlength="8" required/>
+
+  <span *ngIf="registerForm.submitted && password.invalid">
+    <p *ngIf="password.errors?.['required']">Le champ mot de passe est obligatoire</p>
+    <p *ngIf="password.errors?.['minlength']">Le mot de passe doit contenir au moins 8 caractères</p>
+  </span>
+
+  <label for="confirmPassword">Confirmation du mot de passe :</label>
+  <input id="confirmPassword" type="password" name="confirmPassword" #confirmPassword="ngModel" [(ngModel)]="user.confirmPassword" minlength="8" required/>
+
+  <span *ngIf="registerForm.submitted && confirmPassword.invalid">
+    <p *ngIf="confirmPassword.errors?.['required']">La confirmation du mot de passe est obligatoire</p>
+    <p *ngIf="confirmPassword.errors?.['matching']">Les mots de passe ne correspondent pas</p>
+  </span>
+
+  <label for="pseudo">Pseudo :</label>
+  <input id="pseudo" name="pseudo" #pseudo="ngModel" [(ngModel)]="user.pseudo"/>
+
+  
+  <label for="firstname">Prénom : </label>
+  <input id="firstname" name="firstname" #firstname="ngModel" [(ngModel)]="user.firstname" minlength="3"maxlength="15"required/>
+
+  <span *ngIf="registerForm.submitted && firstname.invalid">
+    <p *ngIf="firstname.errors?.['required']">Le prénom est obligatoire</p>
+    <p *ngIf="firstname.errors?.['minlength']">Le prénom doit comporter au moins 3 caractères</p>
+    <p *ngIf="firstname.errors?.['maxlength']">Le prénom ne peut pas dépasser 15 caractères</p>
+  </span>
+
+  <label for="lastname">Nom : </label>
+  <input id="lastname" name="lastname" #lastname="ngModel" [(ngModel)]="user.lastname"  minlength="3" maxlength="15" required/>
+
+  <span *ngIf="registerForm.submitted && lastname.invalid">
+    <p *ngIf="lastname.errors?.['required']">Le nom est obligatoire</p>
+    <p *ngIf="lastname.errors?.['minlength']">Le nom doit contenir au moins 3 caractères</p>
+    <p *ngIf="lastname.errors?.['maxlength']">Le nom ne peut pas dépasser 15 caractères</p>
+  </span>
+  <button type="submit">Soumettre</button>
+</form>
